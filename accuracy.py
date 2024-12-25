@@ -1,6 +1,9 @@
 from utils import *
 
 def measure_accuracy(theta0, theta1, dataset):
+    """
+    Measure the accuracy of the model by comparing the predicted prices to the real prices.
+    """
     correct_predictions = 0
     real_prices = dataset['price']
     estimated_prices = estimate_price(dataset['km'], theta0, theta1)

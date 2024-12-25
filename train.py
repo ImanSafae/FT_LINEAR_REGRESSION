@@ -18,13 +18,13 @@ def plot_data(dataset, theta_0, theta_1):
     plt.legend()
     plt.show()
 
-# def compute_loss(theta_0, theta_1, x, y):
-#     """
-#     Compute the loss function for linear regression.
-#     """
-#     m = len(x)
-#     predictions = theta_0 + theta_1 * x
-#     return (1 / (2 * m)) * np.sum((predictions - y) ** 2)
+def compute_loss(theta_0, theta_1, x, y):
+    """
+    Compute the loss function for linear regression.
+    """
+    m = len(x)
+    predictions = theta_0 + theta_1 * x
+    return (1 / (2 * m)) * np.sum((predictions - y) ** 2)
 
 
 def compute_gradients(mileage_values, price_values, theta_0, theta_1, learning_rate):
@@ -68,7 +68,7 @@ if __name__ == "__main__":
     theta_0, theta_1 = linear_regression(normalized_df)
     theta_0, theta_1 = denormalize_coefficients(theta_0, theta_1, dataset)
     results = pd.DataFrame({"theta_0": [theta_0], "theta_1": [theta_1]})
-    results.to_csv("results.csv", index=False)
+    results.to_csv("thetas.csv", index=False)
     print(f"Final values: theta_0 = {theta_0}, theta_1 = {theta_1}")
     measure_accuracy(theta_0, theta_1, dataset)
     plot_data(dataset, theta_0, theta_1)

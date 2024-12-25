@@ -4,6 +4,9 @@ import os, sys
 import matplotlib.pyplot as plt
 
 def load(path: str):
+    """
+    Load a csv file into a pandas dataframe.
+    """
     ret = None
 
     try:
@@ -19,12 +22,16 @@ def load(path: str):
     return ret
 
 def normalize_dataframe(df: pd.DataFrame):
-    # normalized_data = (df - df.min()) / (df.max() - df.min())
-    # return normalized_data
+    """
+    Standardize the data in the dataframe.
+    """
     standardized_data = (df - df.mean()) / df.std()
     return standardized_data
 
 def denormalize_coefficients(theta_0, theta_1, dataset):
+    """
+    Undo the standardization of the coefficients, so they're usable on real values.
+    """
     mean_x = dataset['km'].mean()
     std_x = dataset['km'].std()
     mean_y = dataset['price'].mean()
